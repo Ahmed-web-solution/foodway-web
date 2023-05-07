@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>food way</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="menu">
+        <nav>
+            <input type="checkbox" id="check" />
+            <label for="check" class="checkbtn">
+                <ion-icon name="grid-outline"></ion-icon>
+            </label>
+
+            <label class="logo"><span>F</span>ood<span>W</span>ay</label>
+
+
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#testimonial">Reviews</a></li>
+                <li><a href="#app">Download App</a></li>
+                <li><a href="login.html" id="user-name">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- End Menu -->
+
+
+    <form class="login" id="login">
+        <h2>Welcome, User!</h2>
+        <p>Please log in</p>
+        <input type="text" placeholder="User Name" id="username" required />
+        <input type="password" placeholder="Password" id="password" required />
+        <input type="submit" value="LogIn" />
+        <div class="links">
+            <a href="#">Forgot password</a>
+        </div>
+    </form>
+
+    <script>
+        let login = document.getElementById('login')
+
+        login.addEventListener('submit', (e) => {
+            let username = document.getElementById('username').value
+            let password = document.getElementById('password').value
+
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+
+        })
+
+        if (localStorage.getItem('username') && localStorage.getItem('username')) {
+            username = document.getElementById('user-name').innerHTML = `
+        <div class="dropdown">
+        <button class="dropbtn">${localStorage.getItem('username')}</button>
+        <div class="dropdown-content">
+        <a href="index.html">Logout</a>
+        </div>
+        </div>
+        `;
+            window.location.href = './login.html';
+        }
+    </script>
+</body>
+
+</html>
